@@ -1,0 +1,56 @@
+<body style="background-color: black;">
+<audio id="mi-audio" src="https://www.elcardoctor.com/wp-content/uploads/2023/07/Marcelo-D2-Claudia-Desabafo-Deixa-Eu-Dizer.mp3"></audio>
+<div class="boton-flotante" onclick="reproducir()">
+  <i id="icono" class="fa fa-play"></i>
+</div>
+<style>
+ .boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.fa {
+  color: #fff;
+  font-size: 16px;
+}
+
+.fa-play:before {
+  content: "\f04b";
+}
+
+.fa-pause:before {
+  content: "\f04c";
+}
+</style>
+</body>
+<script>
+    var audio = document.getElementById("mi-audio");
+var boton = document.getElementById("icono");
+
+audio.addEventListener("ended", function() {
+  boton.classList.remove("fa-pause");
+  boton.classList.add("fa-play");
+});
+
+function reproducir() {
+  if (audio.paused) {
+    audio.play();
+    boton.classList.remove("fa-play");
+    boton.classList.add("fa-pause");
+  } else {
+    audio.pause();
+    boton.classList.remove("fa-pause");
+    boton.classList.add("fa-play");
+  }
+}
+</script>
